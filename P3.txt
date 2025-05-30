@@ -1,0 +1,108 @@
+package Proj;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.edge.EdgeDriver;
+
+public class P3 {
+public static void main(String [] args) throws InterruptedException {
+
+	WebDriver driver = new EdgeDriver();
+
+	driver.get("http://leaftaps.com/opentaps/control/main");
+
+	driver.findElement(By.xpath("//input[@id=\"username\"]")).sendKeys("DemoSalesManager");
+
+	driver.findElement(By.id("password")).sendKeys("crmsfa");	
+
+	driver.findElement(By.xpath("//input[@type='submit']" )).click();
+
+	Thread.sleep(3000);
+
+	driver.findElement(By.partialLinkText("CRM/SFA" )).click();
+
+	String HomepageTitle = driver.getTitle();
+
+	System.out.println(HomepageTitle);
+
+	WebElement a = driver.findElement(By.tagName("b")); 
+
+	String  ActualName = a.getText();
+
+	String b = "DemoSalesManager";
+
+	if( ActualName.equals(b)) {
+
+		System.out.println("PASS");
+	}
+	else {
+		System.out.println("FAIL");
+	}
+	Thread.sleep(3000);
+
+	driver.findElement(By.linkText("Create Lead" )).click();		
+
+	Thread.sleep(2000);
+
+	driver.findElement(By.xpath("//*[@id=\"createLeadForm_companyName\"]")).sendKeys("KannathasanECND");	
+
+	driver.findElement(By.xpath("//*[@id=\"createLeadForm_firstName\"]")).sendKeys("Kanna");	
+
+	driver.findElement(By.xpath("//*[@id=\"createLeadForm_lastName\"]")).sendKeys("thasan");	
+
+	driver.findElement(By.xpath("//*[@id=\"createLeadForm_primaryPhoneNumber\"]")).sendKeys("9078563412");	
+
+	Thread.sleep(3000);	
+	
+	driver.findElement(By.linkText("Create Lead" )).click();	
+
+	Thread.sleep(2000);		
+
+	driver.findElement(By.linkText("Find Leads" )).click();	
+
+	Thread.sleep(2000);
+
+	driver.findElement(By.xpath("/html/body/div[6]/div/div[2]/div[2]/div/div/div/div/div/div[1]/div[2]/div[1]/div/div/div/div/div/div[1]/form/div/div[2]/div/div/div/div/div[4]/div[1]/input" )).sendKeys("KannathasanECND");	
+
+	Thread.sleep(2000);
+
+	driver.findElement(By.xpath("//button[@id='ext-gen334']")).click();	
+
+	Thread.sleep(4000);
+
+	driver.findElement(By.linkText("KannathasanECND" )).click();	
+
+	Thread.sleep(2000);
+
+	driver.findElement(By.linkText("Delete" )).click();	
+
+	Thread.sleep(2000);
+
+	driver.findElement(By.linkText("Find Leads" )).click();	
+
+	Thread.sleep(2000);
+
+	driver.findElement(By.xpath("/html/body/div[6]/div/div[2]/div[2]/div/div/div/div/div/div[1]/div[2]/div[1]/div/div/div/div/div/div[1]/form/div/div[2]/div/div/div/div/div[4]/div[1]/input" )).sendKeys("KannathasanECND");	
+
+	Thread.sleep(2000);
+
+	driver.findElement(By.xpath("//button[@id='ext-gen334']")).click();	
+
+	Thread.sleep(2000);
+	
+	WebElement n = driver.findElement(By.xpath("//button[@id='ext-gen437']"));	
+	
+	String l = n.getText();
+	
+	String p =  "No records to display";
+	
+	if( l.equals(p)) {
+
+		System.out.println("PASS");
+	}
+	else {
+		System.out.println("FAIL");
+	}
+}}
+
